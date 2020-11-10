@@ -1,5 +1,5 @@
 {
-  "name": "@jerryc/fuse",
+  "name": "@jerryc/circuit-breaker",
   "version": "0.0.1",
   "description": "A little pattern that to protect your function on called to often.",
   "main": "build/main/index.js",
@@ -7,7 +7,7 @@
   "module": "build/module/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/JerryC8080/fuse.git"
+    "url": "git+ssh://git@github.com/JerryC8080/circuit-breaker.git"
   },
   "author": "JerryC (huangjerryc@gmail.com)",
   "license": "MIT",
@@ -15,9 +15,9 @@
     "cache"
   ],
   "bugs": {
-    "url": "https://github.com/JerryC8080/fuse/issues"
+    "url": "https://github.com/JerryC8080/circuit-breaker/issues"
   },
-  "homepage": "https://github.com/JerryC8080/fuse#readme",
+  "homepage": "https://github.com/JerryC8080/circuit-breaker#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -53,7 +53,9 @@
   "engines": {
     "node": ">=10"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@retailwe/common-libs-logger": "^0.0.3"
+  },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",

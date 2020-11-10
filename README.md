@@ -1,11 +1,11 @@
-# Fuse
+# circuit-breaker
 
-[![CircleCI](https://circleci.com/gh/JerryC8080/fuse/tree/master.svg?style=svg)](https://circleci.com/gh/JerryC8080/fuse/tree/master)
+[![CircleCI](https://circleci.com/gh/JerryC8080/circuit-breaker/tree/master.svg?style=svg)](https://circleci.com/gh/JerryC8080/circuit-breaker/tree/master)
 
-[![NPM Version](https://img.shields.io/npm/v/@jerryc/fuse.svg)](https://www.npmjs.com/package/@jerryc/fuse) [![NPM Downloads](https://img.shields.io/npm/dm/@jerryc/fuse.svg)](https://www.npmjs.com/package/@jerryc/fuse) [![Coverage Status](https://coveralls.io/repos/github/JerryC8080/fuse/badge.svg?branch=master)](https://coveralls.io/github/JerryC8080/fuse?branch=master) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jerryc/fuse.svg)
+[![NPM Version](https://img.shields.io/npm/v/@jerryc/circuit-breaker.svg)](https://www.npmjs.com/package/@jerryc/circuit-breaker) [![NPM Downloads](https://img.shields.io/npm/dm/@jerryc/circuit-breaker.svg)](https://www.npmjs.com/package/@jerryc/circuit-breaker) [![Coverage Status](https://coveralls.io/repos/github/JerryC8080/circuit-breaker/badge.svg?branch=master)](https://coveralls.io/github/JerryC8080/circuit-breaker?branch=master) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jerryc/circuit-breaker.svg)
 
 A little pattern that to protect your function on called to often.
-I call it the Fuse !
+I call it the circuit-breaker !
 
 # Feature
 
@@ -14,12 +14,12 @@ I call it the Fuse !
 1. Install
 
    ```
-   $ npm install @jerryc/fuse
+   $ npm install @jerryc/circuit-breaker
    ```
 
 2. Import
 
    ```javascript
-   import { Fuse } from '@jerryc/fuse';
-   const fuse = new Fuse();
+   import { CircuitBreaker } from '@jerryc/circuit-breaker';
+   const breaker = new CircuitBreaker();
    ```
