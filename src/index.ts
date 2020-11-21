@@ -1,1 +1,1 @@
-export * from './lib/fuse';
+export * from './lib/circuit-breaker';
