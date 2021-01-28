@@ -8,13 +8,27 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@jerryc/method-fuse.svg)](https://www.npmjs.com/package/@jerryc/method-fuse) [![NPM Downloads](https://img.shields.io/npm/dm/@jerryc/method-fuse.svg)](https://www.npmjs.com/package/@jerryc/method-fuse) [![Coverage Status](https://coveralls.io/repos/github/JerryC8080/method-fuse/badge.svg?branch=master)](https://coveralls.io/github/JerryC8080/method-fuse?branch=master) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jerryc/method-fuse.svg)
 
+## Motivation
+
+在日常开发中，我们会遇到很多这样的场景：
+
+1. 在抢购活动中，用户往往会频繁刷新接口，要给接口加上防护，频繁调用停止响应。
+2. 在弱网环境中，往往会实现失败重试功能，如果失败次数多了，频繁的重试需要制止。
+3. 在股票市场中，当价格波动的幅度在交易时间中达到某一个限定的熔断点时，对其暂停交易一段时间的机制。
+4. ......
+
+这类问题，本质是：**「过热的调用」**
+
+在物理电路中，对于「过热的调用」有一种大家生活中都常见的电子元件：**保险丝**
+
+保险丝会在电流异常升高到一定的高度和热度的时候，自身熔断切断电流，保护电路安全运行。
+
 ## Feature
 
-在电路中，保险丝会在电流异常升高到一定的高度和热度的时候，自身熔断切断电流，保护电路安全运行。
+我们可以模仿以上的思路，去解决编程中的「过热的调用」问题：
 
-MethodFuse，顾名思义，是一种模仿电路保险丝的原理，保护函数频繁调用的设计模式。
-
-它往往适用于如抢购、重试等场景。
+1. 设定一个阈值，如果函数在短时间内调用次数达到这个阈值，就熔断一段时间。
+2. 在函数有一段时间没有被调用了，让函数的热度降下来。
 
 ## Quick Usage
 
