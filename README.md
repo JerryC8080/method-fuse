@@ -73,9 +73,9 @@ MethodFuse，顾名思义，是一种模仿电路保险丝的原理，保护函�
 如果你的项目中支持 `TS` 或者 `ES Decorator`，那么 `MethodFuse` 提供了快捷使用的装饰器。
 
 ```javascript
-import { decorator as circuitBreaker } from '@jerryc/method-fuse';
+import { decorator as methodFuse } from '@jerryc/method-fuse';
 
-@circuitBreaker({ name: 'TestFuse' })
+@methodFuse({ name: 'TestFuse' })
 async function getAsset() {
   return API.requestAssets();
 };
