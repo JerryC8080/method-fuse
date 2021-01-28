@@ -46,7 +46,7 @@ jobs:
       - store_artifacts:
           path: ./reports/ava.xml
 
-  test-coverage:
+  upload-coveralls:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -62,6 +62,32 @@ jobs:
       - store_artifacts:
           path: coverage
 
+  build-coverage:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Test Coverage
+          command: npm run cov
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - coverage/*
+
+  build-docs: 
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Build Docs
+          command: npm run doc:html
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - docs/*
+
   eslint:
     <<: *defaults
     steps:
@@ -75,17 +101,47 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Set github email and user
+          command: |
+            git config --global user.email "huangjerryc@gmail.com"
+            git config --global user.name "CircleCI-Robot"
+      - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Update version as patch
+          command: npm run version
       - run:
           name: Publish package
           command: npm publish
 
-  gh-pages:
+  deploy-docs:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
+      - run:
+          name: Avoid hosts unknown for github
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: Set github email and user
+          command: |
+            git config --global user.email "huangjerryc@gmail.com"
+            git config --global user.name "CircleCI-Robot"
+      - run: 
+          name: Show coverage
+          command: ls coverage
+      - run: 
+          name: Show docs
+          command: ls docs
+      - run:
+          name: Copy to docs folder
+          command: |
+            mkdir docs/coverage
+            cp -rf coverage/* docs/coverage
+      - run: 
+          name: Show docs
+          command: ls docs
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish
@@ -97,12 +153,36 @@ workflows:
       - test:
           requires:
             - build
-      - test-coverage:
+      - upload-coveralls:
           requires:
             - build
+          filters:
+              branches:
+                only: master
       - eslint:
           requires:
             - build
+      - build-docs:
+          requires:
+            - build
+          filters:
+              branches:
+                only: master
+      - build-coverage:
+          requires:
+            - build
+            - build-docs
+          filters:
+              branches:
+                only: master
+      - deploy-docs:
+          requires:
+            - build
+            - build-docs
+            - build-coverage
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
@@ -113,6 +193,4 @@ workflows:
               only: /^v.*/
             branches:
               only: master
-      - gh-pages:
-          requires:
-            - build
+
