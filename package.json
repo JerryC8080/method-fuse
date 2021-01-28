@@ -54,7 +54,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@retailwe/common-libs-logger": "^0.0.3"
+    "@jerryc/mini-logger": "^0.0.4"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
