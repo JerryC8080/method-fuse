@@ -1,6 +1,6 @@
 import { MethodFuse, MethodFuseOptions } from './method-fuse';
 
-export default function concurrentMerger(options: MethodFuseOptions) {
+export default function methodFuse(options: MethodFuseOptions) {
   const methodFuse = new MethodFuse(options);
 
   return function (
