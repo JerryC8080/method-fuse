@@ -1,13 +1,13 @@
 {
-  "name": "@jerryc/circuit-breaker",
+  "name": "@jerryc/method-fuse",
   "version": "0.0.1",
-  "description": "A little pattern that to protect your function on called to often.",
+  "description": "一种保护函数暴露于频繁调用场景下的的设计模式",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/JerryC8080/circuit-breaker.git"
+    "url": "git+ssh://git@github.com/JerryC8080/method-fuse.git"
   },
   "author": "JerryC (huangjerryc@gmail.com)",
   "license": "MIT",
@@ -15,9 +15,9 @@
     "cache"
   ],
   "bugs": {
-    "url": "https://github.com/JerryC8080/circuit-breaker/issues"
+    "url": "https://github.com/JerryC8080/method-fuse/issues"
   },
-  "homepage": "https://github.com/JerryC8080/circuit-breaker#readme",
+  "homepage": "https://github.com/JerryC8080/method-fuse#readme",
   "publishConfig": {
     "access": "public"
   },

@@ -1,15 +1,15 @@
 import { Logger } from '@jerryc/mini-logger';
 
-export const logger = new Logger({ prefix: 'circuit-breaker' });
+export const logger = new Logger({ prefix: 'method-fuse' });
 
-export interface CircuitBreakerOptions {
+export interface MethodFuseOptions {
   name?: string;
   maxLoad?: number;
   breakingTime?: number;
   coolDownTime?: number;
 }
 
-export class CircuitBreaker {
+export class MethodFuse {
   // 保险丝名称
   private name = 'unnamed';
 
@@ -30,7 +30,7 @@ export class CircuitBreaker {
 
   private resetTimer = null;
 
-  constructor(params: CircuitBreakerOptions = {}) {
+  constructor(params: MethodFuseOptions = {}) {
     if (params.name) this.name = params.name;
     if (params.maxLoad) this.maxLoad = params.maxLoad;
     if (params.breakingTime) this.breakingTime = params.breakingTime;

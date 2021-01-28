@@ -1,9 +1,9 @@
 import test from 'ava';
 
-import { CircuitBreaker } from './circuit-breaker';
+import { MethodFuse } from './method-fuse';
 
 test('fuse break', async (t) => {
-  const fuse: CircuitBreaker = new CircuitBreaker({
+  const fuse: MethodFuse = new MethodFuse({
     name: 'fuse break',
     maxLoad: 5,
     breakingTime: 5000,
@@ -31,7 +31,7 @@ test('fuse break', async (t) => {
 });
 
 test('auto freedom', async (t) => {
-  const fuse: CircuitBreaker = new CircuitBreaker({
+  const fuse: MethodFuse = new MethodFuse({
     name: 'auto freedom',
     maxLoad: 3,
     breakingTime: 1000,

@@ -1,7 +1,7 @@
-import { CircuitBreaker, CircuitBreakerOptions } from './circuit-breaker';
+import { MethodFuse, MethodFuseOptions } from './method-fuse';
 
-export default function concurrentMerger(options: CircuitBreakerOptions) {
-  const circuitBreaker = new CircuitBreaker(options);
+export default function concurrentMerger(options: MethodFuseOptions) {
+  const circuitBreaker = new MethodFuse(options);
 
   return function (
     _target: Record<string, any>,
