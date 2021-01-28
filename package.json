@@ -1,6 +1,6 @@
 {
   "name": "@jerryc/method-fuse",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "一种保护函数暴露于频繁调用场景下的的设计模式",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -12,7 +12,8 @@
   "author": "JerryC (huangjerryc@gmail.com)",
   "license": "MIT",
   "keywords": [
-    "cache"
+    "fuse",
+    "method fuse"
   ],
   "bugs": {
     "url": "https://github.com/JerryC8080/method-fuse/issues"
